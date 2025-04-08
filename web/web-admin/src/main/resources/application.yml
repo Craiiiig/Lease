@@ -18,5 +18,8 @@ spring:
 
 #Print SQL Statement for adjustment
 mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: flag
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

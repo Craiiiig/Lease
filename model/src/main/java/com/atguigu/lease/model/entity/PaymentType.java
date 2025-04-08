@@ -6,24 +6,23 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
-@Schema(description = "支付方式表")
+@Schema(description = "Payment method table")
 @TableName(value = "payment_type")
 @Data
 public class PaymentType extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "付款方式名称")
+    @Schema(description = "Payment method name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "每次支付租期数")
+    @Schema(description = "Number of months per payment")
     @TableField(value = "pay_month_count")
     private String payMonthCount;
 
-    @Schema(description = "付费说明")
+    @Schema(description = "Payment description")
     @TableField(value = "additional_info")
     private String additionalInfo;
-
 
 }
