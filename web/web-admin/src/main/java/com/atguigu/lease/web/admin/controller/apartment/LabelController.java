@@ -4,7 +4,6 @@ import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.LabelInfo;
 import com.atguigu.lease.model.enums.ItemType;
 import com.atguigu.lease.web.admin.service.LabelInfoService;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,12 +38,16 @@ public class LabelController {
     @Operation(summary = "Add or modify label information")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdateLabel(@RequestBody LabelInfo labelInfo) {
-        return Result.ok();
+        boolean b = labelInfoService.saveOrUpdate(labelInfo);
+        if (b) return Result.ok();
+        return Result.fail();
     }
 
     @Operation(summary = "Delete label information by ID")
     @DeleteMapping("deleteById")
     public Result deleteLabelById(@RequestParam Long id) {
-        return Result.ok();
+        boolean b = labelInfoService.removeById(id);
+        if (b) return Result.ok();
+        return Result.fail();
     }
 }
