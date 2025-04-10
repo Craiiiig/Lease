@@ -5,11 +5,14 @@ import com.atguigu.lease.model.entity.ViewAppointment;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+/**
+ * Appointment Viewing Information
+ */
 @Data
-@Schema(description = "预约看房信息")
+@Schema(description = "Appointment Viewing Information")
 public class AppointmentVo extends ViewAppointment {
 
-    @Schema(description = "预约公寓信息")
+    @Schema(description = "Apartment Information for the appointment")
     private ApartmentInfo apartmentInfo;
 
 }

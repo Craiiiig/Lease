@@ -3,29 +3,32 @@ package com.atguigu.lease.web.admin.vo.agreement;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+/**
+ * Rental Agreement Query Entity
+ */
 @Data
-@Schema(description = "租约查询实体")
+@Schema(description = "Rental Agreement Query Entity")
 public class AgreementQueryVo {
 
-    @Schema(description = "公寓所处省份id")
+    @Schema(description = "Province ID where the apartment is located")
     private Long provinceId;
 
-    @Schema(description = "公寓所处城市id")
+    @Schema(description = "City ID where the apartment is located")
     private Long cityId;
 
-    @Schema(description = "公寓所处区域id")
+    @Schema(description = "District ID where the apartment is located")
     private Long districtId;
 
-    @Schema(description = "公寓id")
+    @Schema(description = "Apartment ID")
     private Long apartmentId;
 
-    @Schema(description = "房间号")
+    @Schema(description = "Room number")
     private String roomNumber;
 
-    @Schema(description = "用户姓名")
+    @Schema(description = "User's name")
     private String name;
 
-    @Schema(description = "用户手机号码")
+    @Schema(description = "User's phone number")
     private String phone;
 
 }

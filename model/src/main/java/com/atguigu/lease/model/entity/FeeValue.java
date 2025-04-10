@@ -5,23 +5,25 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@Schema(description = "杂项费用值表")
+/**
+ * Miscellaneous Fee Value Table
+ */
+@Schema(description = "Miscellaneous Fee Value Table")
 @TableName(value = "fee_value")
 @Data
 public class FeeValue extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "费用value")
+    @Schema(description = "Fee value name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "收费单位")
+    @Schema(description = "Billing unit")
     @TableField(value = "unit")
     private String unit;
 
-    @Schema(description = "费用所对的fee_key编码")
+    @Schema(description = "Associated fee_key ID")
     @TableField(value = "fee_key_id")
     private Long feeKeyId;
-
 }

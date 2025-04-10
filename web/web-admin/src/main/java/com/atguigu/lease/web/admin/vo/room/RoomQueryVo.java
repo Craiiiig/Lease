@@ -3,19 +3,22 @@ package com.atguigu.lease.web.admin.vo.room;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-@Schema(description = "房间查询实体")
+/**
+ * Room Query Entity
+ */
+@Schema(description = "Room Query Entity")
 @Data
 public class RoomQueryVo {
 
-    @Schema(description = "省份Id")
+    @Schema(description = "Province ID")
     private Long provinceId;
 
-    @Schema(description = "城市Id")
+    @Schema(description = "City ID")
     private Long cityId;
 
-    @Schema(description = "区域Id")
+    @Schema(description = "District ID")
     private Long districtId;
 
-    @Schema(description = "公寓Id")
+    @Schema(description = "Apartment ID")
     private Long apartmentId;
 }

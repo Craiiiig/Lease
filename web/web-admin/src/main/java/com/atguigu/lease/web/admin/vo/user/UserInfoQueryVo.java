@@ -4,14 +4,16 @@ import com.atguigu.lease.model.enums.BaseStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-@Schema(description = "用户信息查询实体")
+/**
+ * User Information Query Entity
+ */
 @Data
+@Schema(description = "User Information Query Entity")
 public class UserInfoQueryVo {
 
-    @Schema(description = "用户手机号码")
+    @Schema(description = "User Phone Number")
     private String phone;
 
-
-    @Schema(description = "用户账号状态")
+    @Schema(description = "User Account Status")
     private BaseStatus status;
 }

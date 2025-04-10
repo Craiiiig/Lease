@@ -4,19 +4,22 @@ import com.atguigu.lease.model.entity.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+/**
+ * Lease Agreement Information
+ */
 @Data
-@Schema(description = "租约信息")
+@Schema(description = "Lease Agreement Information")
 public class AgreementVo extends LeaseAgreement {
 
-    @Schema(description = "签约公寓信息")
+    @Schema(description = "Signed apartment information")
     private ApartmentInfo apartmentInfo;
 
-    @Schema(description = "签约房间信息")
+    @Schema(description = "Signed room information")
     private RoomInfo roomInfo;
 
-    @Schema(description = "支付方式")
+    @Schema(description = "Payment method")
     private PaymentType paymentType;
 
-    @Schema(description = "租期")
+    @Schema(description = "Lease term")
     private LeaseTerm leaseTerm;
 }

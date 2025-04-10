@@ -7,6 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Attribute Key Value Object
+ */
 @Data
 public class AttrKeyVo extends AttrKey {
 

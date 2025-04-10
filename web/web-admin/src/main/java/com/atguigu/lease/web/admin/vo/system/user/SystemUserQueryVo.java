@@ -3,14 +3,16 @@ package com.atguigu.lease.web.admin.vo.system.user;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-
+/**
+ * Employee Query Entity
+ */
 @Data
-@Schema(description = "员工查询实体")
+@Schema(description = "Employee Query Entity")
 public class SystemUserQueryVo {
 
-    @Schema(description= "员工姓名")
+    @Schema(description = "Employee Name")
     private String name;
 
-    @Schema(description= "手机号码")
+    @Schema(description = "Phone Number")
     private String phone;
 }

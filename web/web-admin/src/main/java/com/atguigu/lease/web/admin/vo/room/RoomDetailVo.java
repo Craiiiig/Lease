@@ -8,29 +8,31 @@ import lombok.Data;
 
 import java.util.List;
 
-
-@Schema(description = "房间信息")
+/**
+ * Room Information
+ */
+@Schema(description = "Room Information")
 @Data
 public class RoomDetailVo extends RoomInfo {
 
-    @Schema(description = "所属公寓信息")
+    @Schema(description = "Belonging Apartment Information")
     private ApartmentInfo apartmentInfo;
 
-    @Schema(description = "图片列表")
+    @Schema(description = "List of Images")
     private List<GraphVo> graphVoList;
 
-    @Schema(description = "属性信息列表")
+    @Schema(description = "List of Attribute Information")
     private List<AttrValueVo> attrValueVoList;
 
-    @Schema(description = "配套信息列表")
+    @Schema(description = "List of Facility Information")
     private List<FacilityInfo> facilityInfoList;
 
-    @Schema(description = "标签信息列表")
+    @Schema(description = "List of Label Information")
     private List<LabelInfo> labelInfoList;
 
-    @Schema(description = "支付方式列表")
+    @Schema(description = "List of Payment Types")
     private List<PaymentType> paymentTypeList;
 
-    @Schema(description = "可选租期列表")
+    @Schema(description = "List of Optional Lease Terms")
     private List<LeaseTerm> leaseTermList;
 }

@@ -4,11 +4,13 @@ import com.atguigu.lease.model.entity.AttrValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-
-@Schema(description = "属性值")
+/**
+ * Attribute Value Value Object
+ */
+@Schema(description = "Attribute Value")
 @Data
 public class AttrValueVo extends AttrValue {
 
-    @Schema(description = "对应的属性key_name")
+    @Schema(description = "Corresponding Attribute Key Name")
     private String attrKeyName;
 }

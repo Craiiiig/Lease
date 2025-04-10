@@ -7,10 +7,12 @@ import lombok.Data;
 
 import java.util.List;
 
-
+/**
+ * Fee Key Value Object
+ */
 @Data
 public class FeeKeyVo extends FeeKey {
 
-    @Schema(description = "杂费value列表")
+    @Schema(description = "List of Fee Values")
     private List<FeeValue> feeValueList;
 }
