@@ -4,4 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.lease.web.admin.mapper.AttrKeyMapper">
 
+    <select id="listAttrInfo">
+        SELECT k.id, k.name, v.id attr_value_id, v.name attr_value_name, v.attr_key_id
+        FROM attr_key k
+                 join attr_value v
+                      ON k.id = v.attr_key_id
+        WHERE k.is_deleted = 0
+          AND v.is_deleted = 0;
+    </select>
 </mapper>

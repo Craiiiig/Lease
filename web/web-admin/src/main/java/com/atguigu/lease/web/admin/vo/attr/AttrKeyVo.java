@@ -7,10 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
-
 @Data
 public class AttrKeyVo extends AttrKey {
 
-    @Schema(description = "属性value列表")
+    @Schema(description = "List of Attribute Values")
     private List<AttrValue> attrValueList;
 }
