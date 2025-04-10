@@ -24,8 +24,7 @@ public class AttrKeyServiceImpl extends ServiceImpl<AttrKeyMapper, AttrKey>
 
     @Override
     public List<AttrKeyVo> listAttrInfo() {
-        attrKeyMapper.listAttrInfo();
-        return List.of();
+        return attrKeyMapper.listAttrInfo();
     }
 }
 
