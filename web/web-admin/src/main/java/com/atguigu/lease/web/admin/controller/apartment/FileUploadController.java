@@ -27,9 +27,14 @@ public class FileUploadController {
     @Operation(summary = "Upload File")
     @PostMapping("upload")
     public Result<String> upload(@RequestParam MultipartFile file) {
-        String url = fileService.upload(file);
-        System.err.println(file.getOriginalFilename());
-        return Result.ok(url);
+
+        try {
+            String url = fileService.upload(file);
+            return Result.ok(url);
+        } catch (Exception e) {
+            return Result.fail();
+        }
+
     }
 
 }
