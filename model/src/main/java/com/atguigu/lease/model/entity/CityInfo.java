@@ -5,18 +5,18 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@Schema(description = "城市信息表")
+@Schema(description = "City Information Table")
 @TableName(value = "city_info")
 @Data
 public class CityInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "城市名称")
+    @Schema(description = "City Name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "所属省份id")
+    @Schema(description = "Province ID")
     @TableField(value = "province_id")
     private Integer provinceId;
 

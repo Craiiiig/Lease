@@ -10,32 +10,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Schema(description = "用户信息表")
+@Schema(description = "User Information Table")
 @TableName(value = "user_info")
 @Data
 public class UserInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "手机号码（用做登录用户名）")
+    @Schema(description = "Phone Number (used as login username)")
     @TableField(value = "phone")
     private String phone;
 
-    @Schema(description = "密码")
+    @Schema(description = "Password")
     @TableField(value = "password")
     private String password;
 
-    @Schema(description = "头像url")
+    @Schema(description = "Avatar URL")
     @TableField(value = "avatar_url")
     private String avatarUrl;
 
-    @Schema(description = "昵称")
+    @Schema(description = "Nickname")
     @TableField(value = "nickname")
     private String nickname;
 
-    @Schema(description = "账号状态")
+    @Schema(description = "Account Status")
     @TableField(value = "status")
     private BaseStatus status;
-
 
 }

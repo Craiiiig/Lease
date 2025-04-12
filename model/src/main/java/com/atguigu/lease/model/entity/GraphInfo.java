@@ -6,26 +6,26 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
-@Schema(description = "图片信息表")
+@Schema(description = "Image Information Table")
 @TableName(value = "graph_info")
 @Data
 public class GraphInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "图片名称")
+    @Schema(description = "Image name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "图片所属对象类型")
+    @Schema(description = "Type of item the image is associated with")
     @TableField(value = "item_type")
     private ItemType itemType;
 
-    @Schema(description = "图片所有对象id")
+    @Schema(description = "ID of the item the image belongs to")
     @TableField(value = "item_id")
     private Long itemId;
 
-    @Schema(description = "图片地址")
+    @Schema(description = "Image URL")
     @TableField(value = "url")
     private String url;
 

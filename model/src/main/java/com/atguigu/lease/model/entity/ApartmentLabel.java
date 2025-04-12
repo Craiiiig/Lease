@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
-@Schema(description = "公寓标签关联表")
+/**
+ * Apartment & Label Association Table
+ */
+@Schema(description = "Apartment Label Association Table")
 @TableName(value = "apartment_label")
 @Data
 @Builder
@@ -14,11 +17,11 @@ public class ApartmentLabel extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "公寓id")
+    @Schema(description = "Apartment ID")
     @TableField(value = "apartment_id")
     private Long apartmentId;
 
-    @Schema(description = "标签id")
+    @Schema(description = "Label ID")
     @TableField(value = "label_id")
     private Long labelId;
 

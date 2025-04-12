@@ -10,27 +10,26 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-@Schema(description = "房间信息表")
+@Schema(description = "Room Information Table")
 @TableName(value = "room_info")
 @Data
 public class RoomInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "房间号")
+    @Schema(description = "Room Number")
     @TableField(value = "room_number")
     private String roomNumber;
 
-    @Schema(description = "租金（元/月）")
+    @Schema(description = "Rent (Yuan/Month)")
     @TableField(value = "rent")
     private BigDecimal rent;
 
-    @Schema(description = "所属公寓id")
+    @Schema(description = "Belonging Apartment ID")
     @TableField(value = "apartment_id")
     private Long apartmentId;
 
-    @Schema(description = "是否发布")
+    @Schema(description = "Is Released")
     @TableField(value = "is_release")
     private ReleaseStatus isRelease;
-
 }

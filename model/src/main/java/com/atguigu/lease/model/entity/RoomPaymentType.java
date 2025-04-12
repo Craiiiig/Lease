@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
-@Schema(description = "房间&支付方式关联表")
+@Schema(description = "Room & Payment Type Relationship Table")
 @TableName(value = "room_payment_type")
 @Data
 @Builder
@@ -14,13 +14,11 @@ public class RoomPaymentType extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "房间id")
+    @Schema(description = "Room ID")
     @TableField(value = "room_id")
     private Long roomId;
 
-    @Schema(description = "支付类型id")
+    @Schema(description = "Payment Type ID")
     @TableField(value = "payment_type_id")
     private Long paymentTypeId;
-
-
 }

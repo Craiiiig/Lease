@@ -8,38 +8,38 @@ import lombok.Data;
 
 import java.util.Date;
 
-@Schema(description = "预约看房信息表")
+@Schema(description = "View Appointment Information Table")
 @TableName(value = "view_appointment")
 @Data
 public class ViewAppointment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "用户id")
+    @Schema(description = "User ID")
     @TableField(value = "user_id")
     private Long userId;
 
-    @Schema(description = "用户姓名")
+    @Schema(description = "User Name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "用户手机号码")
+    @Schema(description = "User Phone Number")
     @TableField(value = "phone")
     private String phone;
 
-    @Schema(description = "公寓id")
+    @Schema(description = "Apartment ID")
     @TableField(value = "apartment_id")
     private Long apartmentId;
 
-    @Schema(description = "预约时间")
+    @Schema(description = "Appointment Time")
     @TableField(value = "appointment_time")
     private Date appointmentTime;
 
-    @Schema(description = "备注信息")
+    @Schema(description = "Additional Information")
     @TableField(value = "additional_info")
     private String additionalInfo;
 
-    @Schema(description = "预约状态")
+    @Schema(description = "Appointment Status")
     @TableField(value = "appointment_status")
     private AppointmentStatus appointmentStatus;
 }

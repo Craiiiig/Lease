@@ -6,20 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@Schema(description = "标签信息表")
+@Schema(description = "Label Information Table")
 @TableName(value = "label_info")
 @Data
 public class LabelInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "类型")
+    @Schema(description = "Type")
     @TableField(value = "type")
     private ItemType type;
 
-    @Schema(description = "标签名称")
+    @Schema(description = "Label Name")
     @TableField(value = "name")
     private String name;
-
 
 }

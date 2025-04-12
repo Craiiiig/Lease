@@ -21,15 +21,15 @@ public class BrowsingHistory extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "用户id")
+    @Schema(description = "User ID")
     @TableField("user_id")
     private Long userId;
 
-    @Schema(description = "房间id")
+    @Schema(description = "Room ID")
     @TableField("room_id")
     private Long roomId;
 
-    @Schema(description = "浏览时间")
+    @Schema(description = "Browsing Time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("browse_time")
     private Date browseTime;

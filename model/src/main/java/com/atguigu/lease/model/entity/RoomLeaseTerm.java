@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
  */
 @TableName(value = "room_lease_term")
 @Data
-@Schema(description = "房间租期关系表")
+@Schema(description = "Room Lease Term Relationship Table")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,12 +21,11 @@ public class RoomLeaseTerm extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "房间id")
+    @Schema(description = "Room ID")
     @TableField("room_id")
     private Long roomId;
 
-    @Schema(description = "租期id")
+    @Schema(description = "Lease Term ID")
     @TableField("lease_term_id")
     private Long leaseTermId;
-
 }

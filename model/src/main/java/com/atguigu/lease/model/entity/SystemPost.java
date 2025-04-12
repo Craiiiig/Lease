@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
- * 岗位信息表
+ * Post Information Table
  *
  * @TableName system_post
  */
@@ -17,21 +17,19 @@ public class SystemPost extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "岗位编码")
+    @Schema(description = "Post Code")
     @TableField(value = "code")
     private String postCode;
 
-    @Schema(description = "岗位名称")
+    @Schema(description = "Post Name")
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "岗位描述信息")
+    @Schema(description = "Post Description")
     @TableField(value = "description")
     private String description;
 
-    @Schema(description = "岗位状态")
+    @Schema(description = "Post Status")
     @TableField(value = "status")
     private BaseStatus status;
-
-
 }
