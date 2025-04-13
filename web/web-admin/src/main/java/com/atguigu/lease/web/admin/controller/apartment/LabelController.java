@@ -38,9 +38,8 @@ public class LabelController {
     @Operation(summary = "Add or modify label information")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdateLabel(@RequestBody LabelInfo labelInfo) {
-        boolean b = labelInfoService.saveOrUpdate(labelInfo);
-        if (b) return Result.ok();
-        return Result.fail();
+        labelInfoService.saveOrUpdate(labelInfo);
+        return Result.ok();
     }
 
     @Operation(summary = "Delete label information by ID")

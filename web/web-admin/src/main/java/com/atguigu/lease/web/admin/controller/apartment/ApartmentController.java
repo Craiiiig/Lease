@@ -8,6 +8,8 @@ import com.atguigu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
@@ -64,12 +66,24 @@ public class ApartmentController {
     @Operation(summary = "Update apartment release status by ID")
     @PostMapping("updateReleaseStatusById")
     public Result updateReleaseStatusById(@RequestParam Long id, @RequestParam ReleaseStatus status) {
+        UpdateWrapper<ApartmentInfo> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", id).set("is_release", status);
+        apartmentInfoService.update(updateWrapper);
         return Result.ok();
     }
 
+    /**
+     * Get apartment list by district ID
+     *
+     * @param id District ID
+     * @return a list of apartment in the specific district
+     */
     @Operation(summary = "Get apartment list by district ID")
     @GetMapping("listInfoByDistrictId")
     public Result<List<ApartmentInfo>> listInfoByDistrictId(@RequestParam Long id) {
-        return Result.ok();
+        QueryWrapper<ApartmentInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("district_id", id);
+        List<ApartmentInfo> list = apartmentInfoService.list(queryWrapper);
+        return Result.ok(list);
     }
 }
