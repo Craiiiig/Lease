@@ -12,7 +12,6 @@ import lombok.Data;
 @Schema(description = "Apartment Label Association Table")
 @TableName(value = "apartment_label")
 @Data
-@Builder
 public class ApartmentLabel extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

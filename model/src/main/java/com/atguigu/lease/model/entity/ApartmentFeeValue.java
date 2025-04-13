@@ -12,7 +12,6 @@ import lombok.Data;
 @Schema(description = "Apartment & Fee Value Relationship Table")
 @TableName(value = "apartment_fee_value")
 @Data
-@Builder
 public class ApartmentFeeValue extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
