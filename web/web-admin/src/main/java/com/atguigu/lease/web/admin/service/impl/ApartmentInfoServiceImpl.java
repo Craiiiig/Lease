@@ -2,18 +2,22 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.model.entity.*;
 import com.atguigu.lease.model.enums.ItemType;
-import com.atguigu.lease.web.admin.mapper.ApartmentInfoMapper;
+import com.atguigu.lease.web.admin.mapper.*;
 import com.atguigu.lease.web.admin.service.*;
+import com.atguigu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.atguigu.lease.web.admin.vo.fee.FeeValueVo;
 import com.atguigu.lease.web.admin.vo.graph.GraphVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,18 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
     private ApartmentInfoMapper apartmentInfoMapper;
 
     @Autowired
+    private GraphInfoMapper graphInfoMapper;
+
+    @Autowired
+    private LabelInfoMapper labelInfoMapper;
+
+    @Autowired
+    private FacilityInfoMapper facilityInfoMapper;
+
+    @Autowired
+    private FeeValueMapper feeValueMapper;
+
+    @Autowired
     private GraphInfoService graphInfoService;
 
     @Autowired
@@ -41,6 +57,9 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
 
     @Autowired
     private ApartmentFeeValueService apartmentFeeValueService;
+
+    @Autowired
+    private RoomInfoService roomInfoService;
 
 
     /**
@@ -127,6 +146,70 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
     public IPage<ApartmentItemVo> pageItem(Page<ApartmentItemVo> page, ApartmentQueryVo queryVo) {
 
         return apartmentInfoMapper.pageItem(page, queryVo);
+    }
+
+    /**
+     * @param id apartment id
+     * @return
+     */
+    @Override
+    public ApartmentDetailVo getDetailById(Long id) {
+        // 1. Query apartment info
+        ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(id);
+
+        // 2. query image list
+        List<GraphVo> graphVoList = graphInfoMapper.getListByItemTypeAndId(ItemType.APARTMENT, id);
+
+        // 3. query label list
+        List<LabelInfo> labelInfoList = labelInfoMapper.getLabelListByApartmentId(id);
+        // 4. query facility list
+        List<FacilityInfo> facilityInfoList = facilityInfoMapper.getFacilityListByApartmentId(id);
+        // 5. query fee list
+        List<FeeValueVo> feeValueVoList = feeValueMapper.getFeeValueListByApartmentId();
+        // 6. Assemble result
+        ApartmentDetailVo apartmentDetailVo = new ApartmentDetailVo();
+
+        BeanUtils.copyProperties(apartmentInfo, apartmentDetailVo);
+        apartmentDetailVo.setGraphVoList(graphVoList);
+        apartmentDetailVo.setLabelInfoList(labelInfoList);
+        apartmentDetailVo.setFacilityInfoList(facilityInfoList);
+        apartmentDetailVo.setFeeValueVoList(feeValueVoList);
+
+        return apartmentDetailVo;
+    }
+
+    /**
+     * Remove apartment.
+     * If any rooms of this apartment exist, those rooms would be removed.
+     * @param id Apartment Id
+     */
+    @Transactional()
+    @Override
+    public void removeApartmentById(Long id) {
+        // 1. Remove apartment info
+        boolean b = super.removeById(id);
+        System.err.println(b);
+        // 2. Remove corresponding image info
+        QueryWrapper<GraphInfo> graphInfoQueryWrapper = new QueryWrapper<>();
+        graphInfoQueryWrapper.eq("item_id", id).eq("item_type", ItemType.APARTMENT);
+        graphInfoService.remove(graphInfoQueryWrapper);
+
+        // 3. Remove corresponding facility info
+        QueryWrapper<ApartmentFacility> facilityInfoQueryWrapper = new QueryWrapper<>();
+        facilityInfoQueryWrapper.eq("apartment_id", id);
+        apartmentFacilityService.remove(facilityInfoQueryWrapper);
+        // 4. Remove corresponding label info
+        QueryWrapper<ApartmentLabel> apartmentLabelQueryWrapper = new QueryWrapper<>();
+        apartmentLabelQueryWrapper.eq("apartment_id", id);
+        apartmentLabelService.remove(apartmentLabelQueryWrapper);
+
+        // 5. Remove corresponding fee info
+        QueryWrapper<ApartmentFeeValue> apartmentFeeValueQueryWrapper = new QueryWrapper<>();
+        apartmentFeeValueQueryWrapper.eq("apartment_id", id);
+        apartmentFeeValueService.remove(apartmentFeeValueQueryWrapper);
+
+        // Remove rooms
+        roomInfoService.removeByApartmentId(id);
     }
 }
 

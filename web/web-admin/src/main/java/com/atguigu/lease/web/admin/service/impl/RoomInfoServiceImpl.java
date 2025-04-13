@@ -4,6 +4,7 @@ import com.atguigu.lease.model.entity.RoomInfo;
 import com.atguigu.lease.web.admin.mapper.RoomInfoMapper;
 import com.atguigu.lease.web.admin.service.RoomInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +16,18 @@ import org.springframework.stereotype.Service;
 public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         implements RoomInfoService {
 
+    @Autowired
+    private RoomInfoMapper roomInfoMapper;
+
+    /**
+     * Remove rooms by apartment ID
+     *
+     * @param id apartment ID
+     */
+    @Override
+    public void removeByApartmentId(Long id) {
+        roomInfoMapper.removeByApartmentId(id);
+    }
 }
 
 

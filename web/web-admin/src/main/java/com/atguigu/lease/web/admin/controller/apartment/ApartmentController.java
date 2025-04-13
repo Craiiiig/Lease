@@ -38,20 +38,26 @@ public class ApartmentController {
                                                    @RequestParam long size,
                                                    ApartmentQueryVo queryVo) {
         Page<ApartmentItemVo> apartmentItemVoPage = new Page<>(current, size);
-        IPage<ApartmentItemVo> result =  apartmentInfoService.pageItem(apartmentItemVoPage, queryVo);
+        IPage<ApartmentItemVo> result = apartmentInfoService.pageItem(apartmentItemVoPage, queryVo);
         return Result.ok(result);
     }
 
+    /**
+     * @param id apartment id
+     * @return
+     */
     @Operation(summary = "Get detailed apartment info by ID")
     @GetMapping("getDetailById")
     public Result<ApartmentDetailVo> getDetailById(@RequestParam Long id) {
-
-        return Result.ok();
+        ApartmentDetailVo apartmentDetailVo = apartmentInfoService.getDetailById(id);
+        return Result.ok(apartmentDetailVo);
     }
 
     @Operation(summary = "Delete apartment information by ID")
     @DeleteMapping("removeById")
     public Result removeById(@RequestParam Long id) {
+        // Cannot use removeById() because this can only remove data from apartment_info table
+        apartmentInfoService.removeApartmentById(id);
         return Result.ok();
     }
 
