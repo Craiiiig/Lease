@@ -221,6 +221,43 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         System.err.println(roomDetailVo);
         return roomDetailVo;
     }
+
+    @Override
+    public void removeRoomById(Long id) {
+        // Remove room from room_info
+        super.removeById(id);
+        // Remove other data associated with the room
+        // 1. Remove image list
+        QueryWrapper<GraphInfo> graphInfoQueryWrapper = new QueryWrapper<>();
+        graphInfoQueryWrapper.eq("item_id", id);
+        graphInfoQueryWrapper.eq("item_type", ItemType.ROOM);
+        graphInfoService.remove(graphInfoQueryWrapper);
+
+        // 2. Remove attribute value
+        QueryWrapper<RoomAttrValue> roomAttrValueQueryWrapper = new QueryWrapper<>();
+        roomAttrValueQueryWrapper.eq("room_id", id);
+        roomAttrValueService.remove(roomAttrValueQueryWrapper);
+
+        // 3. Remove facility
+        QueryWrapper<RoomFacility> roomFacilityQueryWrapper = new QueryWrapper<>();
+        roomFacilityQueryWrapper.eq("room_id", id);
+        roomFacilityService.remove(roomFacilityQueryWrapper);
+
+        // 4. Remove labelInfo
+        QueryWrapper<RoomLabel> roomLabelQueryWrapper = new QueryWrapper<>();
+        roomLabelQueryWrapper.eq("room_id", id);
+        roomLabelService.remove(roomLabelQueryWrapper);
+
+        // 5. Remove paymentType
+        QueryWrapper<RoomPaymentType> roomPaymentTypeQueryWrapper = new QueryWrapper<>();
+        roomPaymentTypeQueryWrapper.eq("room_id", id);
+        roomPaymentTypeService.remove(roomPaymentTypeQueryWrapper);
+
+        // 6. Remove leaseTerm
+        QueryWrapper<RoomLeaseTerm> roomLeaseTermQueryWrapper = new QueryWrapper<>();
+        roomLeaseTermQueryWrapper.eq("room_id", id);
+        roomLeaseTermService.remove(roomLeaseTermQueryWrapper);
+    }
 }
 
 
