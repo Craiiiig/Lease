@@ -3,6 +3,7 @@ package com.atguigu.lease.web.admin.mapper;
 import com.atguigu.lease.model.entity.LabelInfo;
 import com.atguigu.lease.model.enums.ItemType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,9 +13,12 @@ import java.util.List;
 * @createDate 2023-07-24 15:48:00
 * @Entity com.atguigu.lease.model.LabelInfo
 */
+
 public interface LabelInfoMapper extends BaseMapper<LabelInfo> {
 
     List<LabelInfo> getLabelListByApartmentId(Long id);
+
+    List<LabelInfo> getLabelListByRoomId(Long id);
 }
 
 

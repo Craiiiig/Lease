@@ -17,4 +17,13 @@
 
 
     </select>
+    <select id="getLabelListByRoomId" resultType="com.atguigu.lease.model.entity.LabelInfo">
+        SELECT id, type, name
+        FROM label_info
+        WHERE is_deleted = 0
+          AND id in (SELECT label_id
+                     FROM room_label
+                     WHERE is_deleted = 0
+                       AND room_id = #{id})
+    </select>
 </mapper>

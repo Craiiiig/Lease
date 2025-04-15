@@ -14,7 +14,7 @@ import java.util.List;
 */
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
 
-    List<FeeValueVo> getFeeValueListByApartmentId();
+    List<FeeValueVo> getFeeValueListByApartmentId(Long id);
 }
 
 

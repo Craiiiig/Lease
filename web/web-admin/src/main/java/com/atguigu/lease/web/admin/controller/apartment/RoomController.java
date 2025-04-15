@@ -1,77 +1,66 @@
 package com.atguigu.lease.web.admin.controller.apartment;
 
-
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.RoomInfo;
 import com.atguigu.lease.model.enums.ReleaseStatus;
+import com.atguigu.lease.web.admin.service.RoomInfoService;
 import com.atguigu.lease.web.admin.vo.room.RoomDetailVo;
 import com.atguigu.lease.web.admin.vo.room.RoomItemVo;
 import com.atguigu.lease.web.admin.vo.room.RoomQueryVo;
 import com.atguigu.lease.web.admin.vo.room.RoomSubmitVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "房间信息管理")
+@Tag(name = "Room Information Management")
 @RestController
 @RequestMapping("/admin/room")
 public class RoomController {
+    @Autowired
+    private RoomInfoService roomInfoService;
 
-    @Operation(summary = "保存或更新房间信息")
+    @Operation(summary = "Save or update room information")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody RoomSubmitVo roomSubmitVo) {
+        roomInfoService.saveOrUpdateRoomInfo(roomSubmitVo);
         return Result.ok();
     }
 
-    @Operation(summary = "根据条件分页查询房间列表")
+    @Operation(summary = "Get paginated room list by conditions")
     @GetMapping("pageItem")
     public Result<IPage<RoomItemVo>> pageItem(@RequestParam long current, @RequestParam long size, RoomQueryVo queryVo) {
-        return Result.ok();
+        IPage<RoomItemVo> page = new Page<>(current, size);
+        IPage<RoomItemVo> result = roomInfoService.pageRoomItemByQuery(page, queryVo);
+        return Result.ok(result);
     }
 
-    @Operation(summary = "根据id获取房间详细信息")
+    @Operation(summary = "Get room details by ID")
     @GetMapping("getDetailById")
     public Result<RoomDetailVo> getDetailById(@RequestParam Long id) {
-        return Result.ok();
+        RoomDetailVo roomDetailVo = roomInfoService.getRoomDetailById(id);
+        return Result.ok(roomDetailVo);
     }
 
-    @Operation(summary = "根据id删除房间信息")
+    @Operation(summary = "Delete room information by ID")
     @DeleteMapping("removeById")
     public Result removeById(@RequestParam Long id) {
         return Result.ok();
     }
 
-    @Operation(summary = "根据id修改房间发布状态")
+    @Operation(summary = "Update room release status by ID")
     @PostMapping("updateReleaseStatusById")
     public Result updateReleaseStatusById(Long id, ReleaseStatus status) {
         return Result.ok();
     }
 
     @GetMapping("listBasicByApartmentId")
-    @Operation(summary = "根据公寓id查询房间列表")
+    @Operation(summary = "Get room list by apartment ID")
     public Result<List<RoomInfo>> listBasicByApartmentId(Long id) {
         return Result.ok();
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

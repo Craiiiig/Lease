@@ -4,6 +4,7 @@ import com.atguigu.lease.model.entity.GraphInfo;
 import com.atguigu.lease.model.enums.ItemType;
 import com.atguigu.lease.web.admin.vo.graph.GraphVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -13,9 +14,11 @@ import java.util.List;
  * @createDate 2023-07-24 15:48:00
  * @Entity com.atguigu.lease.model.GraphInfo
  */
+
 public interface GraphInfoMapper extends BaseMapper<GraphInfo> {
 
     List<GraphVo> getListByItemTypeAndId(ItemType itemType, Long itemId);
+
 }
 
 

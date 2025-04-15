@@ -9,7 +9,6 @@ import lombok.Data;
 @Schema(description = "Room & Attribute Value Association Table")
 @TableName(value = "room_attr_value")
 @Data
-@Builder
 public class RoomAttrValue extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

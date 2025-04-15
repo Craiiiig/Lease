@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author liubo
  * @description 针对表【apartment_info(公寓信息表)】的数据库操作Service实现
  * @createDate 2023-07-24 15:48:00
  */
@@ -165,7 +164,7 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         // 4. query facility list
         List<FacilityInfo> facilityInfoList = facilityInfoMapper.getFacilityListByApartmentId(id);
         // 5. query fee list
-        List<FeeValueVo> feeValueVoList = feeValueMapper.getFeeValueListByApartmentId();
+        List<FeeValueVo> feeValueVoList = feeValueMapper.getFeeValueListByApartmentId(id);
         // 6. Assemble result
         ApartmentDetailVo apartmentDetailVo = new ApartmentDetailVo();
 
