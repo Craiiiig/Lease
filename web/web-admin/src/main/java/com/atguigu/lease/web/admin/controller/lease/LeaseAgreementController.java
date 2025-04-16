@@ -1,6 +1,5 @@
 package com.atguigu.lease.web.admin.controller.lease;
 
-
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.LeaseAgreement;
 import com.atguigu.lease.model.enums.LeaseStatus;
@@ -11,41 +10,39 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-
-@Tag(name = "租约管理")
+@Tag(name = "Lease Agreement Management")
 @RestController
 @RequestMapping("/admin/agreement")
 public class LeaseAgreementController {
 
-    @Operation(summary = "保存或修改租约信息")
+    @Operation(summary = "Save or update lease agreement information")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody LeaseAgreement leaseAgreement) {
         return Result.ok();
     }
 
-    @Operation(summary = "根据条件分页查询租约列表")
+    @Operation(summary = "Paginated query of lease agreement list by condition")
     @GetMapping("page")
     public Result<IPage<AgreementVo>> page(@RequestParam long current, @RequestParam long size, AgreementQueryVo queryVo) {
         return Result.ok();
     }
 
-    @Operation(summary = "根据id查询租约信息")
+    @Operation(summary = "Query lease agreement information by ID")
     @GetMapping(name = "getById")
     public Result<AgreementVo> getById(@RequestParam Long id) {
         return Result.ok();
     }
 
-    @Operation(summary = "根据id删除租约信息")
+    @Operation(summary = "Delete lease agreement information by ID")
     @DeleteMapping("removeById")
     public Result removeById(@RequestParam Long id) {
         return Result.ok();
     }
 
-    @Operation(summary = "根据id更新租约状态")
+    @Operation(summary = "Update lease agreement status by ID")
     @PostMapping("updateStatusById")
     public Result updateStatusById(@RequestParam Long id, @RequestParam LeaseStatus status) {
         return Result.ok();
     }
 
 }
-
