@@ -48,7 +48,7 @@ public class SystemPostController {
     @Operation(summary = "Get position information by ID")
     public Result<SystemPost> getById(@RequestParam Long id) {
         SystemPost systemPost = systemPostService.getById(id);
-        return Result.ok();
+        return Result.ok(systemPost);
     }
 
     @Operation(summary = "Get full list of positions")
