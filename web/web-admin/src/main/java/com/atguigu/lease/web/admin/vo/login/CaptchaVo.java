@@ -13,6 +13,10 @@ import lombok.Data;
 public class CaptchaVo {
 
     @Schema(description = "Captcha image information")
+
+    /**
+     * Base64, convert binary image to a string.
+     */
     private String image;
 
     @Schema(description = "Captcha key")
