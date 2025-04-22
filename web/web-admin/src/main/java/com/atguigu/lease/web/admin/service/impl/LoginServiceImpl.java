@@ -10,6 +10,7 @@ import com.atguigu.lease.web.admin.mapper.SystemUserMapper;
 import com.atguigu.lease.web.admin.service.LoginService;
 import com.atguigu.lease.web.admin.vo.login.CaptchaVo;
 import com.atguigu.lease.web.admin.vo.login.LoginVo;
+import com.atguigu.lease.web.admin.vo.system.user.SystemUserInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wf.captcha.SpecCaptcha;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -82,5 +83,14 @@ public class LoginServiceImpl implements LoginService {
         // Create and return Java-JWT
         return JwtUtil.createToken(systemUser.getId(), systemUser.getUsername());
 
+    }
+
+    @Override
+    public SystemUserInfoVo getLoginUserInfoById(Long userId) {
+        SystemUser systemUser = systemUserMapper.selectById(userId);
+        SystemUserInfoVo user = new SystemUserInfoVo();
+        user.setName(systemUser.getUsername());
+        user.setAvatarUrl(systemUser.getAvatarUrl());
+        return user;
     }
 }

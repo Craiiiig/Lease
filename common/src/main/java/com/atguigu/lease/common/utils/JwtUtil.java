@@ -26,14 +26,15 @@ public class JwtUtil {
         return jwt;
     }
 
-    public static void parseToken(String token) {
+
+    public static Claims parseToken(String token) {
         try {
             Jws<Claims> claimsJws = Jwts
                     .parserBuilder()
                     .setSigningKey(secretKey)
                     .build()
                     .parseClaimsJws(token);
-
+            return claimsJws.getBody();
         } catch (ExpiredJwtException e) {
             throw new LeaseException(ResultCodeEnum.TOKEN_EXPIRED);
         } catch (JwtException e) {

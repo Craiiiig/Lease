@@ -1,5 +1,6 @@
 package com.atguigu.lease.web.admin.controller.login;
 
+import com.atguigu.lease.common.login.LoginUserHolder;
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.web.admin.service.LoginService;
 import com.atguigu.lease.web.admin.vo.login.CaptchaVo;
@@ -35,6 +36,9 @@ public class LoginController {
     @Operation(summary = "Get logged-in user profile information")
     @GetMapping("info")
     public Result<SystemUserInfoVo> info() {
-        return Result.ok();
+        // Get token info from ThreadLocal
+        Long userId = LoginUserHolder.getLoginUser().getUserId();
+        SystemUserInfoVo info = loginService.getLoginUserInfoById(userId);
+        return Result.ok(info);
     }
 }
