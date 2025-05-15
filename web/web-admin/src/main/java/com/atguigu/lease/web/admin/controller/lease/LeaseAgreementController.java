@@ -38,7 +38,7 @@ public class LeaseAgreementController {
     }
 
     @Operation(summary = "Query lease agreement information by ID")
-    @GetMapping(name = "getById")
+    @GetMapping("getById")
     public Result<AgreementVo> getById(@RequestParam Long id) {
         AgreementVo agreement = leaseAgreementService.getAgreementById(id);
         return Result.ok(agreement);

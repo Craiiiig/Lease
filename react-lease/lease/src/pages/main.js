@@ -67,7 +67,7 @@ const Main = () => {
   // Switch sidebar items
   const selectMenu = (e) => {
     // To store the parent directory, if it has children, find children using parent path
-    let data; 
+    let data;
     // / Loop through menu items to find the selected item
     MenuConfig.forEach(item => {
       // find current selected item. 
@@ -137,7 +137,8 @@ const Main = () => {
           style={{
             margin: '24px 16px',
             padding: 24,
-            minHeight: 280,
+            height: 'calc(100vh - 64px)',
+            overflowY: 'auto',           
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}

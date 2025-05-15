@@ -23,7 +23,9 @@ public class ViewAppointmentController {
 
     @Operation(summary = "Paginated query of appointment information")
     @GetMapping("page")
-    public Result<IPage<AppointmentVo>> page(@RequestParam long current, @RequestParam long size, AppointmentQueryVo queryVo) {
+    public Result<IPage<AppointmentVo>> page(@RequestParam long current,
+                                             @RequestParam long size,
+                                             AppointmentQueryVo queryVo) {
         Page<AppointmentVo> page = new Page<>(current, size);
        IPage<AppointmentVo> result =  viewAppointmentService.pageAppointment(page, queryVo);
         return Result.ok(result);

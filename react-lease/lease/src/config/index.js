@@ -14,8 +14,12 @@ const menuItems = [
         {path: '/rental/inspection', name: 'Inspection Appointments', label: 'Inspections'},
         {path: '/rental/leaseTerm', name: 'Manage Lease Terms', label: 'Lease Terms'},
     ]},
-    {path: '/user', name: 'User', label: 'User', icon: 'UserOutlined', url: 'user/index'},
-    {path: '/staff', name: 'Staff', label: 'Staff', icon: 'TeamOutlined', url: 'staff/index'},
+    {path: '/system', name: 'System', label: 'System', icon: 'SettingOutlined', children: [
+        {path: '/system/position', name: 'Position', label: 'Position'}, 
+        {path: '/system/user', name: 'User', label: 'User'},
+    ]}, 
+    {path: '/customer', name: 'Customer', label: 'Customer', icon: 'TeamOutlined', url: 'customer/index'},
+   
 ]
 
 export default menuItems;

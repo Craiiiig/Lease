@@ -6,6 +6,16 @@
 
     <resultMap id="AgreementVoMap" type="com.atguigu.lease.web.admin.vo.agreement.AgreementVo">
         <id property="id" column="id"/>
+        <result property="phone" column="phone"/>
+        <result property="name" column="name"/>
+        <result property="identificationNumber" column="identification_number"/>
+        <result property="leaseStartDate" column="lease_start_date"/>
+        <result property="leaseEndDate" column="lease_end_date"/>
+        <result property="rent" column="rent"/>
+        <result property="deposit" column="deposit"/>
+        <result property="status" column="status"/>
+        <result property="sourceType" column="source_type"/>
+        <result property="additionalInfo" column="additional_info"/>
         <association property="apartmentInfo" javaType="com.atguigu.lease.model.entity.ApartmentInfo"
                      autoMapping="true">
             <id property="id" column="apartment_id"/>
